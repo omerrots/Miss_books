@@ -5,7 +5,7 @@ import { booksDB } from "../assets/booksDb.js";
 const BOOK_KEY = "bookDB";
 _createBooks();
 
-export const booksService = {
+export const bookService = {
 	query,
 	get,
 	remove,

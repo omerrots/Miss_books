@@ -20,8 +20,8 @@ export function App() {
 						<Route path="/home" element={<HomePage />} />
 						<Route path="/about" element={<AboutUs />} />
 						<Route path="/book" element={<BookIndex />} />
-						<Route path="/book/:bookId" element={<BookDetails />} />
-						<Route path="/book/edit" element={<BookEdit />} />
+						{/* <Route path="/book/:bookId" element={<BookDetails />} /> */}
+						{/* <Route path="/book/edit" element={<BookEdit />} /> */}
 					</Routes>
 				</main>
 			</section>

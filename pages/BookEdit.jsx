@@ -55,8 +55,8 @@ export function BookEdit() {
 	const { vendor, speed } = carToEdit;
 	const loadingClass = isLoading ? "loading" : "";
 	return (
-		<section className={`car-edit ${loadingClass}`}>
-			<h1>{bookId ? "Edit" : "Add"} Car</h1>
+		<section className={`book-edit ${loadingClass}`}>
+			<h1>{bookId ? "Edit" : "Add"} Book</h1>
 			<form onSubmit={onSaveCar}>
 				<label htmlFor="vendor">Vendor</label>
 				<input
@@ -78,7 +78,7 @@ export function BookEdit() {
 				<section className="btns flex">
 					<button>Save</button>
 					<button type="button" className="back-btn">
-						<Link to="/car">Back</Link>
+						<Link to="/book">Back</Link>
 					</button>
 				</section>
 			</form>
