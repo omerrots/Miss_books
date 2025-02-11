@@ -1,8 +1,8 @@
 const { useEffect, useState } = React;
 const { Link } = ReactRouterDOM;
 
-// import { CarFilter } from "../cmps/CarFilter.jsx";
-import { CarList } from "../cmps/CarList.jsx";
+import { BookFilter } from "../cmps/BookFilter.jsx";
+import { BookList } from "../cmps/BookList.jsx";
 import { bookService } from "../services/book.service.js";
 
 export function BookIndex() {
@@ -22,8 +22,8 @@ export function BookIndex() {
 			});
 	}
 
-	function onRemoveCar(bookId) {
-		carService
+	function onRemoveBook(bookId) {
+		bookService
 			.remove(bookId)
 			.then(() => {
 				setBooks(books => books.filter(book => book.id !== bookId));
@@ -41,10 +41,9 @@ export function BookIndex() {
 	if (!books) return <div className="loader">Loading...</div>;
 	return (
 		<section className="book-index">
-			books
-			{/* <CarFilter onSetFilter={onSetFilter} filterBy={filterBy} />
-			<Link to="/book/edit">Add Car</Link>
-			<CarList cars={books} onRemoveCar={onRemoveCar} /> */}
+			<BookFilter onSetFilter={onSetFilter} filterBy={filterBy} />
+			{/* <Link to="/book/edit">Add Car</Link> */}
+			<BookList books={books} onRemoveBook={onRemoveBook} />
 		</section>
 	);
 }

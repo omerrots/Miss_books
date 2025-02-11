@@ -1,4 +1,4 @@
-import { booksService } from "../services/books.service.js";
+import { booksService } from "../services/book.service.js";
 
 const { useState, useEffect } = React;
 const { useNavigate, useParams, Link } = ReactRouterDOM;

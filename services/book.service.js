@@ -10,24 +10,25 @@ export const bookService = {
 	get,
 	remove,
 	save,
-	getEmptyCar,
+	getDefaultFilter,
+	getCurrency,
 };
 
 function query(filterBy = {}) {
 	return storageService.query(BOOK_KEY).then(books => {
-		// if (filterBy.txt) {
-		// 	const regExp = new RegExp(filterBy.txt, "i");
-		// 	books = books.filter(car => regExp.test(car.vendor));
-		// }
-		// if (filterBy.minSpeed) {
-		// 	books = books.filter(car => car.speed >= filterBy.minSpeed);
-		// }
+		if (filterBy.name) {
+			const regExp = new RegExp(filterBy.name, "i");
+			books = books.filter(book => regExp.test(book.title));
+		}
+		if (filterBy.price) {
+			books = books.filter(book => book.listPrice.amount >= filterBy.price);
+		}
 		return books;
 	});
 }
 
 function get(bookId) {
-	return storageService.get(BOOK_KEY, bookId).then(_setNextPrevCarId);
+	return storageService.get(BOOK_KEY, bookId).then(_setNextPrevBookId);
 }
 
 function remove(bookId) {
@@ -42,7 +43,11 @@ function save(book) {
 	}
 }
 
-function _setNextPrevCarId(book) {
+function getDefaultFilter() {
+	return { name: "", price: "" };
+}
+
+function _setNextPrevBookId(book) {
 	return query().then(books => {
 		const bookIdx = books.findIndex(currBook => currBook.id === book.id);
 		const nextBook = books[bookIdx + 1] ? books[bookIdx + 1] : books[0];
@@ -61,4 +66,9 @@ function _createBooks() {
 		books = [...booksDB];
 		saveToStorage(BOOK_KEY, books);
 	}
+}
+
+function getCurrency(currencyCode) {
+	const currency = { ILS: "₪", EUR: "€", USD: "$" };
+	return currency[currencyCode];
 }

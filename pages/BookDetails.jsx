@@ -1,15 +1,15 @@
-import { carService } from "../services/car.service.js";
+import { bookService } from "../services/book.service.js";
 
 const { useState, useEffect } = React;
 const { useParams, useNavigate, Link } = ReactRouterDOM;
 
 export function BookDetails() {
-	const [car, setCar] = useState(null);
+	const [book, setbook] = useState(null);
 	const params = useParams();
 	const navigate = useNavigate();
 
 	useEffect(() => {
-		loadCar();
+		loadBook();
 	}, [params.carId]);
 
 	function loadCar() {
@@ -41,7 +41,7 @@ export function BookDetails() {
 				commodi tenetur voluptate deserunt nihil quibusdam. Expedita, architecto
 				omnis?
 			</p>
-			<img src={`../assets/img/${car.vendor}.png`} alt="book-image" />
+			{/* <img src={`../assets/img/${car.vendor}.png`} alt="book-image" /> */}
 			<button onClick={onBack}>Back</button>
 			<section>
 				<button>
