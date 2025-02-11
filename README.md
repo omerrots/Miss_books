@@ -1,4 +1,4 @@
 # My New Repo
 
-a books store project whule learning 
-react to practice mvc + react
+a books store project whule learning
+react to practice mvc,react and git.
