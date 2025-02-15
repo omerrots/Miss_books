@@ -30,18 +30,33 @@ export function BookDetails() {
 	// console.log('Details render')
 
 	if (!book) return <div className="loader">Loading...</div>;
-	console.log("book:", book);
+	console.log("book:", book, book.listPrice.isOnSale);
+
+	const { amount, currencyCode, isOnSale } = book.listPrice;
+
 	return (
 		<section className="book-details">
 			<h1> {book.title}</h1>
-			<h3> {book.authors}</h3>
+			<h3>By {book.authors}</h3>
+			<h4>
+				{new Date().getFullYear() - book.publishedDate > 10 ? "Vintage" : "New"}{" "}
+				Book
+			</h4>
 			<p>
 				Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis quae fuga
 				eveniet, quisquam ducimus modi optio in alias accusantium corrupti veritatis
 				commodi tenetur voluptate deserunt nihil quibusdam. Expedita, architecto
 				omnis?
 			</p>
-			<img src={`${book.thumbnail}`} alt="book-image" />
+			<div className="img-container">
+				<img src={`${book.thumbnail}`} alt="book-image" />
+				{isOnSale && <div className="sale">S A L E</div>}
+			</div>
+			<h3>{bookService.typeOfReading(book.pageCount)}</h3>
+			<h5 className={`book-details ${bookService.priceColor(amount)}`}>
+				Price: {amount}
+				{bookService.getCurrency(currencyCode)}
+			</h5>
 			<button onClick={onBack}>Back</button>
 			<section>
 				<button>

@@ -1,17 +1,17 @@
-.book-details {
+.book-preview {
+	text-align: center;
+	padding: 0.5em;
 	display: flex;
 	flex-direction: column;
-	align-items: flex-start;
-	justify-content: center;
-	padding-bottom: 15vh;
+	align-items: center;
 }
 
-.book-details h1 {
-	color: var(--clr1);
-	font-size: 2em;
+.book-preview h4 {
+	text-transform: capitalize;
+	color: black;
 }
 
-.book-details .img-container {
+.book-preview .img-container {
 	display: inline block;
 	margin: 0 auto;
 	position: relative;
@@ -19,7 +19,7 @@
 	overflow: hidden;
 }
 
-.book-details img {
+.book-preview img {
 	max-width: 200px;
 	width: 100%;
 }
@@ -39,16 +39,4 @@
 	transform-origin: 0 0;
 	transform: rotate(45deg);
 	opacity: 0.5;
-}
-
-/* .book-details .regular {
-	color: black;
-	} */
-
-.expensive {
-	color: red;
-}
-
-.cheap {
-	color: green;
 }

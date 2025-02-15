@@ -12,6 +12,8 @@ export const bookService = {
 	save,
 	getDefaultFilter,
 	getCurrency,
+	typeOfReading,
+	priceColor,
 };
 
 function query(filterBy = {}) {
@@ -75,4 +77,23 @@ function _createBooks() {
 function getCurrency(currencyCode) {
 	const currency = { ILS: "₪", EUR: "€", USD: "$" };
 	return currency[currencyCode];
+}
+
+function typeOfReading(numOfPages) {
+	if (numOfPages > 500) {
+		return "Serious Reading";
+	} else if (numOfPages > 200) {
+		return "Descent Reading";
+	} else if (numOfPages < 100) {
+		return "Light Reading";
+	}
+	return "";
+}
+
+function priceColor(price) {
+	if (price > 150) {
+		return "expensive";
+	} else if (price < 20) {
+		return "cheap";
+	} else return "regular";
 }
