@@ -2,7 +2,7 @@ const Router = ReactRouterDOM.HashRouter;
 const { Routes, Route, Navigate } = ReactRouterDOM;
 
 import { AppHeader } from "./cmps/AppHeader.jsx";
-
+import { NotFound } from "./cmps/NotFound.jsx";
 import { AboutUs } from "./pages/AboutUs.jsx";
 import { BookDetails } from "./pages/BookDetails.jsx";
 import { BookEdit } from "./pages/BookEdit.jsx";
@@ -20,8 +20,10 @@ export function App() {
 						<Route path="/home" element={<HomePage />} />
 						<Route path="/about" element={<AboutUs />} />
 						<Route path="/book" element={<BookIndex />} />
-						{/* <Route path="/book/:bookId" element={<BookDetails />} /> */}
-						{/* <Route path="/book/edit" element={<BookEdit />} /> */}
+						<Route path="/book/:bookId" element={<BookDetails />} />
+						<Route path="/book/edit/:bookId" element={<BookEdit />} />
+						<Route path="/book/edit" element={<BookEdit />} />
+						<Route path="*" element={<NotFound />} />
 					</Routes>
 				</main>
 			</section>

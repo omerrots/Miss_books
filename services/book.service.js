@@ -44,18 +44,22 @@ function save(book) {
 }
 
 function getDefaultFilter() {
-	return { name: "", price: "" };
+	return { title: "", price: "" };
 }
 
 function _setNextPrevBookId(book) {
+	console.log("in");
+
 	return query().then(books => {
 		const bookIdx = books.findIndex(currBook => currBook.id === book.id);
 		const nextBook = books[bookIdx + 1] ? books[bookIdx + 1] : books[0];
 		const prevBook = books[bookIdx - 1]
 			? books[bookIdx - 1]
 			: books[books.length - 1];
-		book.nextBookrId = nextBook.id;
+		book.nextBookId = nextBook.id;
 		book.prevBookId = prevBook.id;
+		console.log("calculate");
+
 		return book;
 	});
 }

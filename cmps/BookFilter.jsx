@@ -22,34 +22,34 @@ export function BookFilter({ filterBy, onSetFilter }) {
 		setFilterByToEdit(prevFilter => ({ ...prevFilter, [field]: value }));
 	}
 
-	function handleChangePrimitive({ target }) {
-		const value = target.value;
-		const field = target.name;
-		setFilterByToEdit(prevFilter => ({ ...prevFilter, [field]: value }));
-	}
+	// function handleChangePrimitive({ target }) {
+	// 	const value = target.value;
+	// 	const field = target.name;
+	// 	setFilterByToEdit(prevFilter => ({ ...prevFilter, [field]: value }));
+	// }
 
-	function handleTxtChange(ev) {
-		const value = ev.target.value;
-		setFilterByToEdit(prevFilter => ({ ...prevFilter, txt: value }));
-	}
+	// function handleTxtChange(ev) {
+	// 	const value = ev.target.value;
+	// 	setFilterByToEdit(prevFilter => ({ ...prevFilter, txt: value }));
+	// }
 
-	function handlepriceChange(ev) {
-		const value = ev.target.value;
-		setFilterByToEdit(prevFilter => ({ ...prevFilter, price: value }));
-	}
+	// function handlepriceChange(ev) {
+	// 	const value = ev.target.value;
+	// 	setFilterByToEdit(prevFilter => ({ ...prevFilter, price: value }));
+	// }
 
-	const { name, price } = filterByToEdit;
+	const { name: title, price } = filterByToEdit;
 	return (
 		<section className="book-filter">
 			<h2>Filter Our Books</h2>
 			<form>
-				<label htmlFor="name">Name of the book:</label>
+				<label htmlFor="title">Name of the book:</label>
 				<input
 					onChange={handleChange}
-					value={name}
+					value={title}
 					type="text"
-					name="name"
-					id="name"
+					name="sssss"
+					id="title"
 				/>
 
 				<label htmlFor="price">price</label>
@@ -61,7 +61,7 @@ export function BookFilter({ filterBy, onSetFilter }) {
 					id="price"
 				/>
 
-				<button>Submit</button>
+				{/* <button>Submit</button> */}
 			</form>
 		</section>
 	);
