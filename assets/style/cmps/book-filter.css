@@ -6,7 +6,7 @@
 
 .book-filter form {
 	display: grid;
-	grid-template-columns: 100px 200px;
+	grid-template-columns: 160px 200px 160px 200px;
 	gap: 0.3em;
 }
 

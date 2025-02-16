@@ -18,12 +18,18 @@ export const bookService = {
 
 function query(filterBy = {}) {
 	return storageService.query(BOOK_KEY).then(books => {
-		if (filterBy.name) {
-			const regExp = new RegExp(filterBy.name, "i");
+		if (filterBy.title) {
+			const regExp = new RegExp(filterBy.title, "i");
 			books = books.filter(book => regExp.test(book.title));
 		}
 		if (filterBy.price) {
-			books = books.filter(book => book.listPrice.amount >= filterBy.price);
+			books = books.filter(book => book.listPrice.amount <= filterBy.price);
+		}
+		if (filterBy.pageCount) {
+			books = books.filter(book => book.pageCount >= filterBy.pageCount);
+		}
+		if (filterBy.onSale) {
+			books = books.filter(book => book.listPrice.isOnSale === filterBy.onSale);
 		}
 		return books;
 	});
@@ -46,12 +52,10 @@ function save(book) {
 }
 
 function getDefaultFilter() {
-	return { title: "", price: "" };
+	return { title: "", price: "", pageCount: "", onSale: "" };
 }
 
 function _setNextPrevBookId(book) {
-	console.log("in");
-
 	return query().then(books => {
 		const bookIdx = books.findIndex(currBook => currBook.id === book.id);
 		const nextBook = books[bookIdx + 1] ? books[bookIdx + 1] : books[0];
@@ -60,7 +64,6 @@ function _setNextPrevBookId(book) {
 			: books[books.length - 1];
 		book.nextBookId = nextBook.id;
 		book.prevBookId = prevBook.id;
-		console.log("calculate");
 
 		return book;
 	});

@@ -38,7 +38,7 @@ export function BookFilter({ filterBy, onSetFilter }) {
 	// 	setFilterByToEdit(prevFilter => ({ ...prevFilter, price: value }));
 	// }
 
-	const { name: title, price } = filterByToEdit;
+	const { title, price, pageCount, onSale } = filterByToEdit;
 	return (
 		<section className="book-filter">
 			<h2>Filter Our Books</h2>
@@ -48,11 +48,19 @@ export function BookFilter({ filterBy, onSetFilter }) {
 					onChange={handleChange}
 					value={title}
 					type="text"
-					name="sssss"
+					name="title"
 					id="title"
 				/>
 
-				<label htmlFor="price">price</label>
+				<label htmlFor="pageCount">Number of Pages:</label>
+				<input
+					onChange={handleChange}
+					value={pageCount || ""}
+					type="number"
+					name="pageCount"
+					id="pageCount"
+				/>
+				<label htmlFor="price">Price up to:</label>
 				<input
 					onChange={handleChange}
 					value={price || ""}
@@ -60,8 +68,14 @@ export function BookFilter({ filterBy, onSetFilter }) {
 					name="price"
 					id="price"
 				/>
-
-				{/* <button>Submit</button> */}
+				<label htmlFor="onSale">onSale:</label>
+				<input
+					onChange={handleChange}
+					value={onSale || ""}
+					type="checkbox"
+					name="onSale"
+					id="onSale"
+				/>
 			</form>
 		</section>
 	);
