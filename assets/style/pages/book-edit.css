@@ -9,8 +9,13 @@
 
 .book-edit form {
 	display: flex;
-	flex-direction: column;
+	display: grid;
+	grid-template-columns: 200px 250px;
+	justify-items: start;
 	align-items: center;
+
+	/* flex-direction: column;
+	align-items: center; */
 	font-size: 1.5rem;
 	font-family: "Edu VIC WA NT Beginner", cursive;
 	width: 50vw;
@@ -20,7 +25,30 @@
 
 .book-edit form input {
 	max-width: 300px;
-	margin-bottom: 15px;
+	border: 1px solid black;
+}
+
+.book-edit form input,
+.book-edit form textarea {
+	margin: 1rem 0;
+	border-top: 1px solid #000;
+	outline: none;
+}
+.book-edit .note {
+	position: relative;
+}
+
+.book-edit .note::after {
+	display: block;
+	width: max-content;
+	position: absolute;
+	content: "note: separate with commas";
+	font-size: medium;
+}
+
+.book-edit form section.btns {
+	grid-column: span 2;
+	align-content: center;
 }
 
 .back-btn {
@@ -30,4 +58,8 @@
 		background-color: black;
 		color: white;
 	}
+}
+
+.book-edit .hide {
+	display: none;
 }

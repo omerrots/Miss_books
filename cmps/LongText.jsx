@@ -1,10 +1,9 @@
 const { useState } = React;
 
 export function LongText({ txt, length = 100 }) {
-	const [showAllText, setShowAllText] = useState(true);
+	const [showAllText, setShowAllText] = useState(false);
 
 	const txtToshow = txt.slice(0, length);
-	console.log(txtToshow);
 
 	return (
 		<section className="long-text">

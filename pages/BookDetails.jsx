@@ -30,7 +30,7 @@ export function BookDetails() {
 	// console.log('Details render')
 
 	if (!book) return <div className="loader">Loading...</div>;
-	console.log("book:", book, book.listPrice.isOnSale);
+	console.log("book:", Object.keys(book.listPrice));
 
 	const { amount, currencyCode, isOnSale } = book.listPrice;
 

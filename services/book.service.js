@@ -14,6 +14,7 @@ export const bookService = {
 	getCurrency,
 	typeOfReading,
 	priceColor,
+	getEmptyBook,
 };
 
 function query(filterBy = {}) {
@@ -99,4 +100,24 @@ function priceColor(price) {
 	} else if (price < 20) {
 		return "cheap";
 	} else return "regular";
+}
+
+function getEmptyBook() {
+	return {
+		id: "",
+		title: "",
+		subtitle: "",
+		authors: [],
+		description: "",
+		pageCount: "",
+		categories: [],
+		language: "",
+		publishedDate: "",
+		thumbnail: "",
+		listPrice: {
+			amount: "",
+			currencyCode: "",
+			isOnSale: "",
+		},
+	};
 }
