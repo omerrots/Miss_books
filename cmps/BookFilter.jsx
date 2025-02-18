@@ -68,7 +68,7 @@ export function BookFilter({ filterBy, onSetFilter }) {
 					name="price"
 					id="price"
 				/>
-				<label htmlFor="onSale">onSale:</label>
+				<label htmlFor="onSale">Only on Sale:</label>
 				<input
 					onChange={handleChange}
 					value={onSale || ""}

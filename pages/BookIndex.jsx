@@ -4,6 +4,8 @@ const { Link } = ReactRouterDOM;
 import { BookFilter } from "../cmps/BookFilter.jsx";
 import { BookList } from "../cmps/BookList.jsx";
 import { bookService } from "../services/book.service.js";
+import { showSuccessMsg } from "../services/event-bus.service.js";
+import { UserMsg } from "../cmps/UserMsg.jsx";
 
 export function BookIndex() {
 	const [books, setBooks] = useState(null);
@@ -27,9 +29,11 @@ export function BookIndex() {
 			.remove(bookId)
 			.then(() => {
 				setBooks(books => books.filter(book => book.id !== bookId));
+				showSuccessMsg("Book has been successfully removed!");
 			})
 			.catch(err => {
 				console.log("Cannot remove book:", err);
+				showErrorMsg(`couldn't remove book`);
 			});
 	}
 
@@ -42,6 +46,7 @@ export function BookIndex() {
 	return (
 		<section className="book-index">
 			<BookFilter onSetFilter={onSetFilter} filterBy={filterBy} />
+			<UserMsg />
 			{/* <Link to="/book/edit">Add Car</Link> */}
 			<BookList books={books} onRemoveBook={onRemoveBook} />
 		</section>
